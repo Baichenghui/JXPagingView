@@ -298,8 +298,11 @@ open class JXPagingListContainerView: UIView {
         }else {
             collectionView.reloadData()
         }
-        listWillAppear(at: currentIndex)
-        listDidAppear(at: currentIndex)
+        
+        UIView.animate(withDuration: 0.25) {
+            self.listWillAppear(at: self.currentIndex)
+            self.listDidAppear(at: self.currentIndex)
+        } 
     }
 
     //MARK: - Private
