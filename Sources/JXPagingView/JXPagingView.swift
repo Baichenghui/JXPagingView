@@ -299,7 +299,9 @@ open class JXPagingView: UIView {
 //MARK: - UITableViewDataSource, UITableViewDelegate
 extension JXPagingView: UITableViewDataSource, UITableViewDelegate {
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        /// 无列表时0行即可
+        let listCount = delegate?.numberOfLists(in: self) ?? 1
+        return listCount > 0 ? 1 : 0
     }
 
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
